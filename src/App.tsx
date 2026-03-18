@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import SideBar from './components/SideBar.tsx'
 import SearchBar from './components/SearchBar.tsx'
+import Board from './components/Board.tsx'
 
 const App = () => {
 
@@ -9,7 +10,6 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
     setSearchQuery(e.target.value)
   }
 
@@ -24,6 +24,7 @@ const App = () => {
         onChange={handleSearch} 
         value={searchQuery} 
       />
+      <Board />
     </div>
   )
 }

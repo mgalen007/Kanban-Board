@@ -7,10 +7,10 @@ interface SearchBarProps {
     value: string
 }
 
-function SearchBar({ placeholder, onChange, value }: SearchBarProps) {
+const SearchBar = ({ placeholder, onChange, value }: SearchBarProps) => {
     return (
         <div
-            className="fixed left-40 top-5 w-[20%]"
+            className="fixed left-35 top-5 w-[20%]"
         >
             <Search
                 color="gray"
@@ -22,7 +22,7 @@ function SearchBar({ placeholder, onChange, value }: SearchBarProps) {
                 name="search-bar"
                 value={value}
                 onChange={onChange}
-                className="border border-black/20 bg-white rounded-lg w-full pr-4 py-2 pl-10 focus:border-gray-500 focus:outline-none"
+                className="border border-black/20 bg-white rounded-3xl w-full pr-4 py-2 pl-10 focus:border-gray-500 focus:outline-none"
             ></input>
         </div>
     )

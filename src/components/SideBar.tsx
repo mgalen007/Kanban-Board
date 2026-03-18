@@ -24,7 +24,7 @@ const SideBar = ({ active, onIconClick }: SideBarProps) => {
     let optionIcons = [icons[1], icons[2], icons[3]]
 
     return (
-        <nav className="bg-[#1e0058] border w-fit fixed left-0 h-full px-5 flex flex-col justify-between py-5 items-center">
+        <nav className="bg-[#1e0058] border w-fit h-[100vh] px-5 flex flex-col justify-between py-5 items-center">
             <div>
                 {icons[0].node}
             </div>
