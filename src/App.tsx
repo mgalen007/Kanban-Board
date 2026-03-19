@@ -13,8 +13,6 @@ const taskStats: TaskStat[] = [
 ]
 
 const App = () => {
-
-  const [activeIcon, setActiveIcon] = useState('home')
   const [searchQuery, setSearchQuery] = useState('')
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +23,7 @@ const App = () => {
     <div
       className="flex h-screen"
     >
-      <SideBar 
-        active={activeIcon} 
-        onIconClick={setActiveIcon} 
-      />
+      <SideBar />
       <div
         className="flex-1 grid grid-cols-[70%_30%] overflow-hidden"
       >
