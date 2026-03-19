@@ -1,7 +1,9 @@
+import ProgressBar from './ProgressBar.tsx'
 
 export interface TaskCardProps {
     title: string
     description: string
+    progress: number
 }
 
 interface TagProps {
@@ -11,8 +13,8 @@ interface TagProps {
 
 type TagType = "#0000FF" | "#e703f8" | "#fc0398" | "#ff8000"
 
-const TaskCard = ({title, description}: TaskCardProps) => {
-    const tagTypes: TagType[] = ["#ff8000", "#0000FF","#fc0398", "#e703f8"]
+const TaskCard = ({title, description, progress}: TaskCardProps) => {
+    const tagTypes: TagType[] = ["#fc0398", "#ff8000", "#0000FF", "#e703f8"]
     const randomColor = tagTypes[title.length % tagTypes.length]
 
     return (
@@ -26,6 +28,9 @@ const TaskCard = ({title, description}: TaskCardProps) => {
             <p>
                 {description}
             </p>
+            <ProgressBar 
+                progress={progress}
+            />
         </div>
     )
 }

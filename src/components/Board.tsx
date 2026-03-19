@@ -3,15 +3,15 @@ import TaskCard, { type TaskCardProps } from './TaskCard.tsx'
 
 
 const tasks: TaskCardProps[] = [
-    { title: "Web Design", description: "Wireframing, mockups, client collaboration" },
-    { title: "Mobile App", description: "Wireframing, mockups, client collaboration" },
-    { title: "Dashboard", description: "Wireframing, mockups, client collaboration" },
-    { title: "App Development", description: "Wireframing, mockups, client collaboration" },
-    { title: "Dashboard", description: "Wireframing, mockups, client collaboration" },
-    { title: "Landing Page", description: "Wireframing, mockups, client collaboration" },
-    { title: "Mobile App", description: "Wireframing, mockups, client collaboration" },
-    { title: "Web Development", description: "Wireframing, mockups, client collaboration" },
-    { title: "App Development", description: "Wireframing, mockups, client collaboration" }
+    { title: "Web Design", description: "Wireframing, mockups, client collaboration", progress: 47 },
+    { title: "Mobile App", description: "Wireframing, mockups, client collaboration", progress: 78 },
+    { title: "Dashboard", description: "Wireframing, mockups, client collaboration", progress: 75 },
+    { title: "App Development", description: "Wireframing, mockups, client collaboration", progress: 67 },
+    { title: "Dashboard", description: "Wireframing, mockups, client collaboration", progress: 33 },
+    { title: "Landing Page", description: "Wireframing, mockups, client collaboration", progress: 20 },
+    { title: "Mobile App", description: "Wireframing, mockups, client collaboration", progress: 92 },
+    { title: "Web Development", description: "Wireframing, mockups, client collaboration", progress: 81 },
+    { title: "App Development", description: "Wireframing, mockups, client collaboration", progress: 58 }
 ]
 
 const Board = () => {
@@ -39,6 +39,7 @@ const Board = () => {
                             key={task.title}
                             title={task.title}
                             description={task.description}
+                            progress={task.progress}
                         />
                     )
                 })}
