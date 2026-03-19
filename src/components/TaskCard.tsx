@@ -17,7 +17,7 @@ const TaskCard = ({title, description}: TaskCardProps) => {
 
     return (
         <div
-            className="border border-gray-300 rounded-xl px-6 py-4 h-full w-full shadow-md"
+            className="border bg-[#ffffff] border-gray-300 rounded-xl px-6 py-4 h-full w-full"
         >
             <Tag
                 name={title}
