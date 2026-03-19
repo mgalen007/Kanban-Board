@@ -18,7 +18,7 @@ const Board = () => {
 
     return (
         <div
-            className="bg-[#ffffff]/10 fixed top-[12vh] left-35 border border-gray-300 rounded-3xl w-[67%] h-[85vh] pb-2"
+            className="bg-[#ffffff]/10 fixed top-[12vh] left-31 border border-gray-300 rounded-3xl w-[67%] h-[85vh] pb-2"
         >
             <div
                 className="mt-3 px-6 flex items-center justify-between"

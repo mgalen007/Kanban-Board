@@ -15,7 +15,7 @@ const ProgressBar = ({progress}: ProgressBarProps) => {
                 {progress}%
             </p>
             <div
-                className="bg-black/10 h-2 mt-6 rounded-xl w-full"
+                className="bg-black/5 h-2 mt-6 rounded-xl w-full"
             >
                 <div
                     className="bg-[#754be5] h-full rounded-xl"

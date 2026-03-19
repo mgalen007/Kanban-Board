@@ -10,7 +10,7 @@ interface SearchBarProps {
 const SearchBar = ({ placeholder, onChange, value }: SearchBarProps) => {
     return (
         <div
-            className="fixed left-35 top-5 w-[20%]"
+            className="fixed left-32 top-5 w-[20%]"
         >
             <Search
                 color="gray"
