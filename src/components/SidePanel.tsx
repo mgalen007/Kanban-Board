@@ -1,4 +1,4 @@
-import { ChartNoAxesCombined } from 'lucide-react'
+import { ChartNoAxesCombined, CalendarClock, Bell, SquarePen, ChevronDown } from 'lucide-react'
 import { type CSSProperties } from 'react'
 
 interface SidePanelProps {
@@ -21,6 +21,11 @@ export interface TaskStat {
 type StatCategory = "total" | "completed" | "waiting" | "in progress"
 
 const SidePanel = ({ username, totalProgress, taskStats }: SidePanelProps) => {
+
+    const radius = 67
+    const circumference = 2 * Math.PI * radius
+    const offset = circumference * (1 - totalProgress / 100)
+
     return (
         <div
             className="flex flex-col ml-[80px] mr-7 gap-1 h-[85vh] mt-[12vh]"
@@ -53,7 +58,26 @@ const SidePanel = ({ username, totalProgress, taskStats }: SidePanelProps) => {
                     className="w-[60%] bg-[#e5e5ff] h-[42%] mx-auto mt-3 rounded-[50%] relative"
                 >
                     <svg width="167" height="165">
-                        <circle cx="97" cy="95" r="67" strokeWidth="4" stroke="#e703f8" fill="#e5e5ff"></circle>
+                        <circle 
+                            cx="97" 
+                            cy="95" 
+                            r="67" 
+                            strokeWidth="4" 
+                            stroke="#d0d0ff" 
+                            fill="#e5e5ff"
+                        ></circle>
+                        <circle
+                            cx="97"
+                            cy="95"
+                            r="67"
+                            strokeWidth="4"
+                            stroke="#754be5"
+                            fill="transparent"
+                            strokeDasharray={circumference}
+                            strokeDashoffset={offset}
+                            strokeLinecap="round"
+                            style={{ transition: "stroke-dash-offset .5s ease" }}
+                        ></circle>
                     </svg>
                     <div
                         className="bg-white w-[50%] h-[50%] absolute top-12 left-12 rounded-[50%] flex items-center justify-center"
@@ -83,12 +107,75 @@ const SidePanel = ({ username, totalProgress, taskStats }: SidePanelProps) => {
                 className="h-[30%] flex flex-col gap-1"
             >
                 <div
-                    className="border border-gray-300 h-[50%] rounded-xl"
+                    className="border border-gray-300 h-[50%] rounded-xl flex gap-2 items-center pl-6"
                 >
+                    <div
+                        className="rounded-lg w-fit p-2 bg-[#754be5] h-[42%]"
+                    >
+                        <CalendarClock 
+                            color="white"
+                        />
+                    </div>
+                    <div
+                        className="ml-2 w-fit"
+                    >
+                        <h3
+                            className="text-[15px] font-medium text-black/60"
+                        >
+                            {new Date().toDateString()}
+                        </h3>
+                        <p
+                            className="font-medium"
+                        >
+                            08:00 AM - 11:30 AM
+                        </p>
+                    </div>
+                    <div
+                        className="mx-auto"
+                    >
+                        <SquarePen 
+                            className="cursor-pointer"
+                            color="gray"
+                        />
+                    </div>
                 </div>
                 <div
-                    className="border border-gray-300 h-[50%] rounded-xl"
+                    className="border border-gray-300 h-[50%] rounded-xl flex items-center"
                 >
+                    <div
+                        className="w-fit ml-6 p-2 rounded-lg bg-[#1c5eff] relative h-[42%]"
+                    >
+                        <div
+                            className="rounded-[50%] border w-5 h-5 flex items-center justify-center absolute top-[-1vh] right-[-1vh] pb-[1px] text-white font-medium bg-red-600"
+                        >
+                            {0}
+                        </div>
+                        <Bell 
+                            color="white"
+                        />
+                    </div>
+                    <div
+                        className="ml-4 mr-7 self-center"
+                    >
+                        <h3
+                            className="text-[15px] font-medium text-black/60"
+                        >
+                            Notifications
+                        </h3>
+                        <p
+                            className="font-medium"
+                        >
+                            (No notifications)
+                        </p>
+                    </div>
+                    <div
+                        className="mx-auto"
+                    >
+                        <ChevronDown 
+                            className="cursor-pointer"
+                            color="gray"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,10 +202,10 @@ const TaskStatCard = ({ type, amount, key }: TaskStatCardProps) => {
                 {type.toUpperCase()}
             </h3>
             <div
-                className="flex items-center pl-1"
+                className="flex items-center pl-1 mt-[2px]"
             >
                 <div
-                    className="w-[2%] h-5 rounded-lg mr-2"
+                    className="w-[2%] h-6 rounded-lg mr-2"
                     style={{
                         "border-left": `4px solid ${color}8A`
                     } as CSSProperties}

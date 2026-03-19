@@ -45,7 +45,7 @@ const App = () => {
         <SidePanel
           username="John Doe" 
           taskStats={taskStats}
-          totalProgress={100}
+          totalProgress={72}
         />
       </div>
     </div>
