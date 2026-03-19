@@ -20,7 +20,7 @@ const ProgressBar = ({progress}: ProgressBarProps) => {
                 <div
                     className="bg-[#754be5] h-full rounded-xl"
                     style={{
-                        "width": `${progress}%`
+                        "width": `${Math.min(100, Math.max(0, progress))}%`
                     } as CSSProperties}
                 >
                 </div>
