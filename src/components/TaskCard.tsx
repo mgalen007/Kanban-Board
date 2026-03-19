@@ -19,7 +19,7 @@ const TaskCard = ({title, description, progress}: TaskCardProps) => {
 
     return (
         <div
-            className="border bg-[#ffffff] border-gray-300 rounded-xl px-6 py-4 h-full w-full"
+            className="border bg-white/40 border-gray-300 rounded-xl px-6 py-4 h-full w-full"
         >
             <Tag
                 name={title}

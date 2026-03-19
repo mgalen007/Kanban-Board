@@ -80,7 +80,7 @@ const SidePanel = ({ username, totalProgress, taskStats }: SidePanelProps) => {
                         ></circle>
                     </svg>
                     <div
-                        className="bg-white w-[50%] h-[50%] absolute top-12 left-12 rounded-[50%] flex items-center justify-center"
+                        className="bg-white/75 w-[50%] h-[50%] absolute top-12 left-12 rounded-[50%] flex items-center justify-center"
                     >
                         <h3
                             className="text-black font-bold text-xl"
