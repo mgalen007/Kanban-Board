@@ -2,16 +2,16 @@ import mongoose from 'mongoose'
 
 const taskSchema = new mongoose.Schema({
     category: {
-        type: string,
+        type: String,
         enum: ["in progress", "waiting", "completed"],
         required: true
     },
     title: {
-        type: string,
+        type: String,
         required: true
     },
     description: {
-        type: string,
+        type: String,
         required: true
     },
     userID: {
