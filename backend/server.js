@@ -6,12 +6,13 @@ import authRoutes from './routes/authRoutes.js'
 import notificationRoutes from './routes/notificationRoutes.js'
 import taskRoutes from './routes/taskRoutes.js'
 import sessionRoutes from './routes/sessionRoutes.js'
+import connectDB from './utils/db.js'
 
 // Load environment variables
 dotenv.config()
 
-const PORT = process.env.PORT || 3000
 const app = express()
+connectDB()
 
 // Middleware
 app.use(express.json())
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
     next()
 })
 
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))
 
 
