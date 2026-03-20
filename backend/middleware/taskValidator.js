@@ -2,6 +2,11 @@ import taskSchema from '../schemas/taskSchema.js'
 
 const validate = async (req, res, next) => {
     try {
+        if (!req.body) {
+            return res.status(400).json({
+                error: 'Invalid request body'
+            })
+        }
         await taskSchema.validateAsync(req.body)
         next()
     } catch(err) {
