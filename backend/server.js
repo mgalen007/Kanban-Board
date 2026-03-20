@@ -7,6 +7,7 @@ import notificationRoutes from './routes/notificationRoutes.js'
 import taskRoutes from './routes/taskRoutes.js'
 import sessionRoutes from './routes/sessionRoutes.js'
 import connectDB from './utils/db.js'
+import logger from './middleware/logger.js'
 
 // Load environment variables
 dotenv.config()
@@ -17,6 +18,7 @@ connectDB()
 // Middleware
 app.use(express.json())
 app.use(cors())
+app.use(logger)
 
 // Health check endpoint
 app.get('/health-check', (req, res) => {
