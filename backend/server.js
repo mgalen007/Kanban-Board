@@ -8,6 +8,7 @@ import taskRoutes from './routes/taskRoutes.js'
 import sessionRoutes from './routes/sessionRoutes.js'
 import connectDB from './utils/db.js'
 import logger from './middleware/logger.js'
+import authMiddleware from './middleware/authMiddleware.js'
 
 // Load environment variables
 dotenv.config()
@@ -30,9 +31,9 @@ app.get('/health-check', (req, res) => {
 
 // Mount routes
 app.use('/auth', authRoutes)
-app.use('/tasks', taskRoutes)
-app.use('/sessions', sessionRoutes)
-app.use('/notifications', notificationRoutes)
+app.use('/tasks', authMiddleware, taskRoutes)
+app.use('/sessions', authMiddleware, sessionRoutes)
+app.use('/notifications', authMiddleware, notificationRoutes)
 
 // 404 route
 app.use((req, res, next) => {
