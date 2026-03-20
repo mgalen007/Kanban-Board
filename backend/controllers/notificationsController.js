@@ -3,6 +3,11 @@ import mongoose from 'mongoose'
 
 const getUserNotifications = async (req, res) => {
     try {
+        if (!req.params.userID) {
+            return res.status(400).json({
+                error: 'User ID not provided'
+            })
+        }
         if (!mongoose.Types.ObjectId.isValid(req.params.userID)) {
             return res.status(400).json({
                 error: 'Invalid user ID'
@@ -10,7 +15,7 @@ const getUserNotifications = async (req, res) => {
         }
         const notifications = await Notification.find({ userID: req.params.userID })
         if (notifications.length == 0) {
-            return res.status(204).json({
+            return res.status(201).json({
                 message: 'This user has no notifications'
             })
         }
@@ -43,6 +48,11 @@ const createNotification = async (req, res) => {
 
 const deleteNotification = async (req, res) => {
     try {
+        if (!req.params.id) {
+            return res.status(400).json({
+                error: 'Notification ID not provided'
+            })
+        }
         if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
             return res.status(400).json({
                 error: 'Invalid notification ID'
@@ -55,7 +65,7 @@ const deleteNotification = async (req, res) => {
             })
         }
         await Notification.deleteOne(notification)
-        res.status(204).json({
+        res.status(201).json({
             message: 'Notification deleted successfully'
         })
     } catch(err) {
