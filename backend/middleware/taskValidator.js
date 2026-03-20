@@ -6,9 +6,8 @@ const validate = async (req, res, next) => {
         next()
     } catch(err) {
         if (err.isJoi) {
-            const errors = err.map(detail => detail.message)
             return res.status(400).json({
-                error: errors
+                error: err.details[0].message
             })
         }
         res.status(500).json({
