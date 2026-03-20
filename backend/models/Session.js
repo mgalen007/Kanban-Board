@@ -8,7 +8,7 @@ const sessionSchema = new mongoose.Schema({
     tasks: {
         type: [mongoose.Schema.Types.ObjectId]
     }
-})
+}, { timestamps: true })
 
 const Session = mongoose.model("Session", sessionSchema)
 
