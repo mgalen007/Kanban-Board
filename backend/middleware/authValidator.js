@@ -2,10 +2,15 @@ import { registerSchema, loginSchema } from '../schemas/authSchemas.js'
 
 const validate = async (req, res, next) => {
     try {
-        if (req.url == '/auth/register') {
+        if (!req.body) {
+            return res.status(400).json({
+                error: 'Request body empty'
+            })
+        }
+        if (req.url == '/register') {
             await registerSchema.validateAsync(req.body)
             next()
-        } else if (req.url == '/auth/login') {
+        } else if (req.url == '/login') {
             await loginSchema.validateAsync(req.body)
             next()
         }
