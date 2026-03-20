@@ -1,13 +1,18 @@
-import taskSchema from '../schemas/taskSchema.js'
+import sessionSchema from '../schemas/sessionSchema.js'
+import mongoose from 'mongoose'
 
 const validate = async (req, res, next) => {
     try {
-        if (!req.body) {
+        if (!req.query.userID) {
             return res.status(400).json({
-                error: 'Missing request body'
+                error: 'User ID not provided'
             })
         }
-        await taskSchema.validateAsync(req.body)
+        if (!mongoose.Types.ObjectId.isValid(req.query.userID)) {
+            return res.status(400).json({
+                error: 'Invalid user ID'
+            })
+        }
         next()
     } catch(err) {
         if (err.isJoi) {
@@ -15,6 +20,7 @@ const validate = async (req, res, next) => {
                 error: err.details[0].message
             })
         }
+        console.error(err)
         res.status(500).json({
             error: 'Server error, try again later'
         })

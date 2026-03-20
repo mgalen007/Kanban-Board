@@ -1,7 +1,13 @@
 import Task from '../models/Task.js'
+import mongoose from 'mongoose'
 
 const getTaskByID = async (req, res) => {
     try {
+        if (!mongoose.Types.ObjectId.isValid(req.params.taskID)) {
+            return res.status(400).json({
+                error: 'Invalid task ID'
+            })
+        }
         const task = await Task.findOne({ _id: req.params.taskID })
         if (!task) {
             return res.status(404).json({
@@ -19,6 +25,11 @@ const getTaskByID = async (req, res) => {
 
 const deleteTask = async (req, res) => {
     try {
+        if (!mongoose.Types.ObjectId.isValid(req.params.taskID)) {
+            return res.status(400).json({
+                error: 'Invalid task ID'
+            })
+        }
         const task = Task.findOne({ _id: req.params.taskID })
         if (!task) {
             return res.status(404).json({
