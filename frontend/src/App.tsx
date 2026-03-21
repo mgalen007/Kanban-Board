@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import React from 'react'
 import SideBar from './components/SideBar.tsx'
 import SearchBar from './components/SearchBar.tsx'
 import Board from './components/Board.tsx'
@@ -13,12 +11,6 @@ const taskStats: TaskStat[] = [
 ]
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value)
-  }
-
   return (
     <div
       className="flex h-screen"
@@ -32,8 +24,6 @@ const App = () => {
         >
           <SearchBar 
             placeholder="Search" 
-            onChange={handleSearch} 
-            value={searchQuery} 
           />
           <Board />
         </div>
