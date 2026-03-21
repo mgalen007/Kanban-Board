@@ -6,7 +6,7 @@ import taskSchema from '../schemas/taskSchema.js'
 
 const getUserSessions = async (req, res) => {
     try {
-        const sessions = await Session.find({ userID: req.query.userID })
+        const sessions = await Session.find({ userID: req.user.id })
         if (sessions.length == 0) {
             return res.json({
                 message: 'This user has no sessions'
@@ -23,9 +23,10 @@ const getUserSessions = async (req, res) => {
 
 const createSession = async (req, res) => {
     try {
-        await Session.create({ userID: req.query.userID })
-        res.status(204).json({
-            message: 'Session created successfully'
+        const newSession = await Session.create({ userID: req.user.id })
+        res.status(201).json({
+            message: 'Session created successfully',
+            session: newSession
         })
     } catch(err) {
         console.error(err)

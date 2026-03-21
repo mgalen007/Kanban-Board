@@ -5,8 +5,8 @@ import sessionValidator from '../middleware/sessionValidator.js'
 const router = express.Router()
 
 router.route("/")
-    .get(sessionValidator, sessionsController.getUserSessions)
-    .post(sessionValidator, sessionsController.createSession)
+    .get(sessionsController.getUserSessions)
+    .post(sessionsController.createSession)
 
 router.route("/:sessionID")
     .get(sessionsController.getSessionByID)
