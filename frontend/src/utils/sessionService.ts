@@ -4,8 +4,8 @@ interface Session {
     _id: string
     userID: string
     tasks: string[]
-    createdAt: string
-    updatedAt: string
+    createdAt: Date
+    updatedAt: Date
     __v: number
 }
 

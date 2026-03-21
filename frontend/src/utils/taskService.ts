@@ -6,8 +6,8 @@ interface Task {
     title: string
     category: "in progress" | "waiting" | "completed"
     description: string
-    createdAt: string
-    updatedAt: string
+    createdAt: Date
+    updatedAt: Date
     __v: number
 }
 
