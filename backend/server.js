@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js'
 import notificationRoutes from './routes/notificationRoutes.js'
 import taskRoutes from './routes/taskRoutes.js'
 import sessionRoutes from './routes/sessionRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import connectDB from './utils/db.js'
 import logger from './middleware/logger.js'
 import authMiddleware from './middleware/authMiddleware.js'
@@ -34,6 +35,7 @@ app.use('/auth', authRoutes)
 app.use('/tasks', authMiddleware, taskRoutes)
 app.use('/sessions', authMiddleware, sessionRoutes)
 app.use('/notifications', authMiddleware, notificationRoutes)
+app.use('/users', authMiddleware, userRoutes)
 
 // 404 route
 app.use((req, res, next) => {
