@@ -50,7 +50,14 @@ const deleteTask = async (req, res) => {
 
 const createTask = async (req, res) => {
     try {
-        const newTask = await Task.create(req.body.task)
+        const task = { 
+            title: req.body.task.title,
+            category: req.body.task.category,
+            description: req.body.task.description,
+            userID: req.user.id,
+            sessionID: req.body.task.sessionID
+         }
+        const newTask = await Task.create(task)
         res.status(201).json({
             message: 'Task created successfully',
             task: newTask
