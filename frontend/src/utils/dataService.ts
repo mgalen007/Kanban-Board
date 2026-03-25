@@ -9,14 +9,14 @@ import { getTask } from './taskService.ts'
 import { getSession } from './sessionService.ts'
 
 
-interface GetDataParams {
+export interface GetDataParams {
     userID: string
     sessionID: string
     endTime: Date
     token: string
 }
 
-interface Data {
+export interface Data {
     username: string
     tasks: TaskWithStat[]
     stats: Stats

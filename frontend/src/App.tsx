@@ -2,6 +2,8 @@ import SideBar from './components/SideBar.tsx'
 import SearchBar from './components/SearchBar.tsx'
 import Board from './components/Board.tsx'
 import SidePanel, { type TaskStat } from './components/SidePanel.tsx'
+import { getData, type Data, type GetDataParams } from './utils/dataService.ts'
+import { useState, useEffect } from 'react' 
 
 const taskStats: TaskStat[] = [
   { category: "total", amount: 144 },
@@ -10,7 +12,31 @@ const taskStats: TaskStat[] = [
   { category: "waiting", amount: 24 }
 ]
 
+const params: GetDataParams = {
+  userID: localStorage.getItem('userID'),
+  sessionID: localStorage.getItem('sessionID'),
+  endTime: localStorage.getItem('endTime'),
+  token: localStorage.getItem('token')
+}
+
+const [data, setData] = useState(null)
+const [loading, setLoading] = useState(false)
+const [error, setError] = useState(false)
+
 const App = () => {
+  useEffect(async (): Promise<void> => {
+    try {
+      setLoading(true)
+      const data = await getData(params)
+      if (!data) setError(true)
+      setData(data)
+      setLoading(false)
+    } catch(err) {
+      console.error(err)
+      setError(true)
+    }
+  }, [])
+
   return (
     <div
       className="flex h-screen"
