@@ -12,31 +12,39 @@ const taskStats: TaskStat[] = [
   { category: "waiting", amount: 24 }
 ]
 
+const endTime = localStorage.getItem('endTime')!
+const endTimeString = new Date(endTime)
+
 const params: GetDataParams = {
-  userID: localStorage.getItem('userID'),
-  sessionID: localStorage.getItem('sessionID'),
-  endTime: localStorage.getItem('endTime'),
-  token: localStorage.getItem('token')
+  userID: localStorage.getItem('userID')!,
+  sessionID: localStorage.getItem('sessionID')!,
+  endTime: endTimeString,
+  token: localStorage.getItem('token')!
 }
 
-const [data, setData] = useState(null)
-const [loading, setLoading] = useState(false)
-const [error, setError] = useState(false)
+const [data, setData] = useState<Data | null>(null)
+const [loading, setLoading] = useState<boolean>(false)
+const [error, setError] = useState<boolean>(false)
 
 const App = () => {
-  useEffect(async (): Promise<void> => {
-    try {
-      setLoading(true)
-      const data = await getData(params)
-      if (!data) setError(true)
-      setData(data)
-      setLoading(false)
-    } catch(err) {
-      console.error(err)
-      setError(true)
-    }
-  }, [])
-
+  useEffect(() => {
+    (async (): Promise<void> => {
+      try {
+        setLoading(true)
+        const data = await getData(params)
+        if (!data) setError(true)
+        setData(data)
+      }
+      catch(err) {
+        console.error(err)
+        setError(true)
+      }
+      finally {
+        setLoading(false)
+      }
+    })()
+  })
+  
   return (
     <div
       className="flex h-screen"
