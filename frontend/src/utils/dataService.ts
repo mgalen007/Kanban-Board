@@ -22,14 +22,14 @@ export interface Data {
     stats: Stats
 }
 
-interface TaskWithStat {
+export interface TaskWithStat {
     title: string
     description: string
     category: "in progress" | "waiting" | "completed"
     progress: number
 }
 
-interface Stats {
+export interface Stats {
     totalProgress: number
     totalTasks: number
     completed: number

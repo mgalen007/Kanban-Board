@@ -44,7 +44,7 @@ const App = () => {
       }
     })()
   })
-  
+
   return (
     <div
       className="flex h-screen"
@@ -63,7 +63,7 @@ const App = () => {
         </div>
         <SidePanel
           username="John Doe" 
-          taskStats={taskStats}
+          stats={data.stats}
           totalProgress={72}
         />
       </div>
